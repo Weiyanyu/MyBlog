@@ -19,4 +19,9 @@ public class BloggerController {
     public String manager() {
         return "admin/menu/manager";
     }
+
+    @RequestMapping("admin/write")
+    public String write() {
+        return "admin/writerblog";
+    }
 }

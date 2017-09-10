@@ -4,6 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.yeonon.dao.BloggerDao">
+    <!--下面type属性使用了别名，别名常用有两种形式，具体网上都有相关内容，在这里使用的是package属性来指定，-->
+    <!--表明这个包下的Bean 都使用别名，而不是使用全限定类名，默认是类名首字母小写，但是事实上，MyBatis并不区分-->
+    <!--大小写，所以这里使用完全相同的类名也没有问题-->
     <resultMap id="BloggerResult" type="Blogger">
         <id property="id" column="id" />
         <result property="userName" column="username"/>

@@ -20,7 +20,21 @@
         }
     </style>
 
-
+    <script>
+        function openTab(text, url, icon) {
+            if ($('#tabs').tabs('exists', text)) {
+                $('#tabs').tabs('select', text)
+            }
+            else {
+                $('#tabs').tabs('add', {
+                    title : text,
+                    closable: true,
+                    iconCls : icon,
+                    content : "<iframe frameborder=0 scrolling='auto' style='width:100%;height:100%' src='${blog}/admin/"+url+"'></iframe>"
+                })
+            }
+        }
+    </script>
 </head>
 <body class="easyui-layout">
     <div data-options="region:'north'" style="height:60px">
@@ -44,7 +58,7 @@
     <div data-options="region:'west',split:true" title="菜单管理" style="width:200px;">
         <div class="easyui-accordion" data-options="fit:true,border:false">
             <div title="常用操作" data-options="selected:true,iconCls:'icon-item'" style="padding: 10px;">
-                <a href="#" class="easyui-linkbutton"
+                <a href="javascript:openTab('写博客', 'write.html', 'icon-writeblog')" class="easyui-linkbutton"
                    data-options="plain:true,iconCls:'icon-writeblog'" style="width: 150px;">写博客</a>
                 <a href="#" class="easyui-linkbutton"
                    data-options="plain:true,iconCls:'icon-review'" style="width: 150px">评论审核</a>
@@ -83,11 +97,13 @@
 
     </div>
     <div data-options="region:'center',title:'中心',iconCls:'icon-ok'">
-        <div class="easyui-tabs" style="">
+        <div id="tabs" class="easyui-tabs" style="">
             <div title="首页" style="padding:10px">
                 <p><font>Hello</font></p>
             </div>
         </div>
     </div>
 </body>
+
+
 </html>
